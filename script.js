@@ -1,6 +1,6 @@
 console.log("Pagina carregada!");
 
-document.addEventListener('submit',function(event){
+document.addEventListener('submit', async function(event){
     //evita a pagina ser recarregada ao submeter ao formulario
     event.preventDefault();
 
@@ -16,7 +16,7 @@ document.addEventListener('submit',function(event){
     const edtAddress = document.getElementById('fieldAddress');
     const addressValue = edtAddress.value;
     console.log('Endereco:', addressValue);
-    
+
 
     const edtAge = document.getElementById('fieldAge');
     const ageValue = edtAge.value;
