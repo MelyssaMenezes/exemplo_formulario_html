@@ -16,6 +16,13 @@ const edtAddress = document.querySelector('#fieldAddress');
 // Obtem o elemento html com ID fieldAge
 const edtAge = document.querySelector('#fieldAge');
 
+
+
+// Obtem o elemento button(cancelar)
+const cancelButton = document.querySelector('#cancelButton');
+
+
+
 // Limpa o formulario e da o foco no campo Nome
 clearForm();
 
@@ -33,6 +40,18 @@ document.addEventListener('submit', async function(event){
     // Limpa o formulario e da foco no campo Nome
     clearForm();
 });
+
+// Função disparada quando ocorrer o click no botão cancelar
+cancelButton.addEventListener('click', async function(){
+    const confirmation = confirm('Tem certeza que deseja cancelar?');
+    if(confirmation) {
+    // Limpa o formulario e da foco no campo Nome
+    clearForm();
+    console.log('Cancelando edicao!');
+    }
+
+});
+
 
 function saveCustomer(){
     console.log('Função saveCustomer executado!');
