@@ -61,6 +61,20 @@ body {
     width: 100px;
 }
 
+
+.form-control small {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: #e74c3c;
+    visibility: hidden;
+}
+
+.form-control.error small {
+    visibility: visible;
+}
+
+
 /* Formatacao dos botãos do formulario*/
  
 button[type= "submit"] {

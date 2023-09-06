@@ -61,20 +61,74 @@ function saveCustomer(){
     const edtAddressValue = edtAddress.value;
     const edtAgeValue = edtAge.value;
 
-    console.log(edtNameValue, edtAddressValue, edtAgeValue);
+    //console.log(edtNameValue, edtAddressValue, edtAgeValue);
 
+    //cria um objeto com os dados do clientes
     const customer = {
         name: edtNameValue,
         address: edtAddressValue,
         age: edtAgeValue
     }
 
-    // Adiciona objeto (cliente(customer)) na lista de clientes(array)
-    customerList.push(customer);
-    console.log(customerList);
+    if(validateCustomer(customer)) {
+        customerList.push(customer);
+        console.log(customerList);
+    }
 }
 
 function clearForm() {
     mainForm.reset();
     edtName.focus();
 }
+
+function validateCustomer(customer) {
+    let result = true;
+
+    //verificar se o campo nome foi prenchido
+    //se nao result = false    
+    if(customer.name == '') {
+        result = false;
+
+        //Adicionar a classe css error na diz form-control
+        //pegar o pai do componente imput q é a div pai
+        const formtControl = edtName.parentElement;
+
+        //adicionar a classe error na div pai
+        formtControl.className = 'form-control error';
+
+        console.log('O campo nome é obrigatorio.')
+    }
+
+     //verificar se o campo endereco foi prenchido
+     //se nao result = false
+     if(customer.address == '') {
+        result = false;
+
+        //Adicionar a classe css error na diz form-control
+        //pegar o pai do componente imput q é a div pai
+        const formtControl = edtAddress.parentElement;
+
+        //adicionar a classe error na div pai
+        formtControl.className = 'form-control error';
+
+        console.log('O campo endereço é obrigatorio.')
+    }
+
+     //verificar se o campo idade foi prenchido
+     //se nao result = false
+     if(customer.age == '') {
+        result = false;
+
+        //Adicionar a classe css error na diz form-control
+        //pegar o pai do componente imput q é a div pai
+        const formtControl = edtAge.parentElement;
+
+        //adicionar a classe error na div pai
+        formtControl.className = 'form-control error';
+
+        console.log('O campo idade é obrigatorio.')
+    }
+
+    return result;
+}
+
