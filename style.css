@@ -103,3 +103,29 @@ button[type= "button"] {
     display: flex;
 }
 
+
+.container-table {
+    width: 100%;
+    padding: 10px;
+}
+
+.customer-table {
+    border-collapse: collapse ;
+    width: 100%;
+    max-width: none;
+}
+
+.customer-table th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.customer-table th {
+    background-color: #f2f2f2;
+}
+
+
+
+
+
