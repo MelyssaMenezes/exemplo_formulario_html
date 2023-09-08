@@ -34,12 +34,13 @@ document.addEventListener('submit', async function(event){
 
     console.log("Formulario submetido!!");
 
+    clearValidateMessages();
+
     // Salva o cadastro do cliente
     saveCustomer();
-
-    // Limpa o formulario e da foco no campo Nome
-    clearForm();
 });
+
+
 
 // Função disparada quando ocorrer o click no botão cancelar
 cancelButton.addEventListener('click', async function(){
@@ -47,6 +48,7 @@ cancelButton.addEventListener('click', async function(){
     if(confirmation) {
     // Limpa o formulario e da foco no campo Nome
     clearForm();
+    clearValidateMessages();
     console.log('Cancelando edicao!');
     }
 
@@ -72,6 +74,10 @@ function saveCustomer(){
 
     if(validateCustomer(customer)) {
         customerList.push(customer);
+
+        // Limpa o formulario e da foco no campo Nome
+        clearForm();
+
         console.log(customerList);
     }
 }
@@ -91,10 +97,10 @@ function validateCustomer(customer) {
 
         //Adicionar a classe css error na diz form-control
         //pegar o pai do componente imput q é a div pai
-        const formtControl = edtName.parentElement;
+        const formControl = edtName.parentElement;
 
         //adicionar a classe error na div pai
-        formtControl.className = 'form-control error';
+        formControl.className = 'form-control error';
 
         console.log('O campo nome é obrigatorio.')
     }
@@ -106,10 +112,10 @@ function validateCustomer(customer) {
 
         //Adicionar a classe css error na diz form-control
         //pegar o pai do componente imput q é a div pai
-        const formtControl = edtAddress.parentElement;
+        const formControl = edtAddress.parentElement;
 
         //adicionar a classe error na div pai
-        formtControl.className = 'form-control error';
+        formControl.className = 'form-control error';
 
         console.log('O campo endereço é obrigatorio.')
     }
@@ -121,10 +127,10 @@ function validateCustomer(customer) {
 
         //Adicionar a classe css error na diz form-control
         //pegar o pai do componente imput q é a div pai
-        const formtControl = edtAge.parentElement;
+        const formControl = edtAge.parentElement;
 
         //adicionar a classe error na div pai
-        formtControl.className = 'form-control error';
+        formControl.className = 'form-control error';
 
         console.log('O campo idade é obrigatorio.')
     }
@@ -132,3 +138,11 @@ function validateCustomer(customer) {
     return result;
 }
 
+function clearValidateMessages() {
+    //Obter todas as div form-control que estiveram com a classe error
+    const listFormControls = document.querySelectorAll('.error');
+    //Precorrer cada div form-control com a classe error e remover a classe error
+    listFormControls.forEach(formControlDiv => {
+        formControlDiv.className = 'form-control';
+    })
+}
